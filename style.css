@@ -4,3 +4,13 @@
   width: 400px;
   height: 300px;
 }
+
+.cover {
+  display: block;
+  opacity: 1;
+}
+
+.pic {
+  display: none;
+  opacity: 0;
+}
