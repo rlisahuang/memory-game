@@ -38,12 +38,10 @@ function flipCard() {
 }
 
 function hide(e) {
-  // e.style.opacity = '0';
   e.style.display = 'none';
 }
 
 function show(e) {
-  // e.style.opacity = '1';
   e.style.display = 'block';
 }
 //check for matches
