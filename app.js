@@ -21,6 +21,8 @@ function startGame() {
 
 //flip your card
 function flipCard() {
+  msgBoard.innerText = '';
+
   let cardId = this.getAttribute('data-id');
   cardsChosen.push(cardsCollection.get(cardId));
   cardsChosenId.push(cardId);
@@ -30,13 +32,14 @@ function flipCard() {
   show(img);
   hide(cover);
 
-  msgBoard.innerText = '';
-
   if (cardsChosen.length === 2) {
-      checkForMatch();
+    checkForMatch();
   }
+
 }
 
+// ***TASK 1: Fix the bugs with `hide` and `show`***
+// hint: go check `style.css`
 function hide(e) {
   e.style.display = 'none';
 }
@@ -44,7 +47,13 @@ function hide(e) {
 function show(e) {
   e.style.display = 'block';
 }
-//check for matches
+// ******************END of TASK 1******************
+
+// TASK 2: Implement the `else` branch of `checkForMatch`
+// Specification: When two pictures are not a match, flip the image over again,
+//    and display some message about the result.
+// Hint: check the implementation of the other two branches.
+
 function checkForMatch() {
   const optionOneId = cardsChosenId[0]
   const optionTwoId = cardsChosenId[1]
