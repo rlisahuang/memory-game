@@ -32,20 +32,16 @@ function flipCard() {
   show(img);
   hide(cover);
 
-  if (cardsChosen.length === 2) {
-    checkForMatch();
-  }
-
 }
 
 // ***TASK 1: Fix the bugs with `hide` and `show`***
 // hint: go check `style.css`
 function hide(e) {
-  e.style.display = 'none';
+  e.style.opacity = '0';
 }
 
 function show(e) {
-  e.style.display = 'block';
+  e.style.opacity = '1';
 }
 // ******************END of TASK 1******************
 
@@ -72,20 +68,6 @@ function checkForMatch() {
     msgBoard.innerText = 'You found a match';
     cardsWon.push(cardsChosen)
   } else {
-    msgBoard.innerText = 'Sorry, try again';
-
-    const cardOne = cardsCollection.get(optionOneId)['card'];
-    const coverOne = cardOne.querySelector('.cover');
-    const imgOne = cardOne.querySelector('.pic');
-    show(coverOne);
-    hide(imgOne);
-
-
-    const cardTwo = cardsCollection.get(optionTwoId)['card'];
-    const coverTwo = cardTwo.querySelector('.cover');
-    const imgTwo = cardTwo.querySelector('.pic');
-    show(coverTwo);
-    hide(imgTwo);
 
   }
 
