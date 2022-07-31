@@ -1,8 +1,8 @@
-const grid = document.querySelector('.grid')
-const resultDisplay = document.querySelector('#result')
-let cardsChosen = [] //objs
-let cardsChosenId = [] // strings
-let cardsWon = []
+const grid = document.querySelector('.grid');
+const resultDisplay = document.querySelector('#result');
+let cardsChosen = [];
+let cardsChosenId = [];
+let cardsWon = [];
 let cardsCollection = new Map();
 const msgBoard = document.querySelector('.msg');
 const cards = document.querySelectorAll('.card');
@@ -23,25 +23,33 @@ function startGame() {
 function flipCard() {
   msgBoard.innerText = '';
 
-  let cardId = this.getAttribute('data-id');
+  // try create a bug out of line 27
+  let cardId = `${parseInt(this.getAttribute('data-id')) + 1}` ;
   cardsChosen.push(cardsCollection.get(cardId));
   cardsChosenId.push(cardId);
+  visual.log(cardsChosenId);
   const cover = this.querySelector('.cover');
   const img = this.querySelector('.pic');
 
   show(img);
   hide(cover);
 
+  if (cardsChosen.length > 2) {
+    checkForMatch();
+  }
 }
 
 // ***TASK 1: Fix the bugs with `hide` and `show`***
 // hint: go check `style.css`
+// 1. look at the entire codebase beforehand. explain out loud what would happen
 function hide(e) {
-  e.style.opacity = '0';
+  // e.style.opacity = '0';
+  e.style.display = 'none';
 }
 
 function show(e) {
-  e.style.opacity = '1';
+  // e.style.opacity = '1';
+  e.style.display = 'block';
 }
 // ******************END of TASK 1******************
 
@@ -68,6 +76,18 @@ function checkForMatch() {
     msgBoard.innerText = 'You found a match';
     cardsWon.push(cardsChosen)
   } else {
+    msgBoard.innerText = 'You did not find a match';
+    const card = cardsCollection.get(optionOneId)['card'];
+    const cover = card.querySelector('.cover');
+    const img = card.querySelector('.pic');
+    show(cover);
+    hide(img);
+
+    const cardTwo = cardsCollection.get(optionTwoId)['card'];
+    const coverTwo = cardTwo.querySelector('.cover');
+    const imgTwo = cardTwo.querySelector('.pic');
+    show(coverTwo);
+    hide(imgTwo);
 
   }
 
