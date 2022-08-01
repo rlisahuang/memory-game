@@ -76,7 +76,7 @@ const loggingBoard = document.querySelector('#logging');
 loggingBoard.addEventListener('click', clickOnLogging);
 
 function clickOnLogging() {
-  this.innerText = 
+  this.innerText = "Logging area has been clicked!";
 }
 
 /************************************
